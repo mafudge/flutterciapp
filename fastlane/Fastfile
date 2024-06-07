@@ -10,16 +10,16 @@ lane :ios_icons do
 lane :android_icons do
     android_appicon(
         appicon_image_file: './media/ci-icon-1024x1024.png',
-        appicon_path: './android/app/src/main',
+        appicon_path: './android/app/src/main/res/mipmap',
         generate_rounded: true
     )
 end
 
-
 lane :build do
-    clean_output = sh('flutter','clean')
-    UI.success("cleaned #{clean_output}!")
+    sh('flutter','clean')
+    sh('flutter','pub','get')
     sh('flutter','build', 'appbundle')
+    sh('flutter','build', 'ipa')
     # output_file = flutter_build(debug: true, build: 'appbundle')
     # # output_file = flutter_build(UI.success("Built #{output_file}!")
     # #     debug: true,
