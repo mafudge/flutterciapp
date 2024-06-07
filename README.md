@@ -2,15 +2,19 @@
 
 A new Flutter project.
 
-## Getting Started
+## commands:
 
-This project is a starting point for a Flutter application.
+### Flutter sanity checks
 
-A few resources to get you started if this is your first Flutter project:
+    $ flutter create --org co.apphammer flutterciapp
+    $ cd flutterciapp
+    $ flutter build appbundle
+    $ flutter build ipa
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Simulators / Emulators
+    $ open -a Simulator
+    $ emulator -avd pixel6a
+
+
+## fastlane

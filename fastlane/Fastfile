@@ -1,0 +1,58 @@
+
+lane :ios_icons do
+    appicon(
+      appicon_image_file: './media/ci-icon-1024x1024.png',
+      appicon_devices: %i[ipad iphone ios_marketing watch watch_marketing],
+      appicon_path: './ios/Runner/Assets.xcassets'
+    )
+  end
+
+lane :android_icons do
+    android_appicon(
+        appicon_image_file: './media/ci-icon-1024x1024.png',
+        appicon_path: './android/app/src/main',
+        generate_rounded: true
+    )
+end
+
+
+lane :build do
+    clean_output = sh('flutter','clean')
+    UI.success("cleaned #{clean_output}!")
+    sh('flutter','build', 'appbundle')
+    # output_file = flutter_build(debug: true, build: 'appbundle')
+    # # output_file = flutter_build(UI.success("Built #{output_file}!")
+    # #     debug: true,
+
+    # #     # Uncomment the following to build a specific binary (apk, appbundle, ios
+    # #     # etc). When unspecified, the plugin will use Fastlane platform specific
+    # #     # default.
+    # #     #
+    # #     # build: 'appbundle',
+
+    # #     # Override version from pubspec.yaml.
+    # #     build_number: 123,
+    # #     build_name: '1.2.3',
+
+    # #     # Demo of custom build arguments appended to "flutter build" command line.
+    # #     build_args: build_args,
+    # #     )
+
+    # #     # NOTE: for iOS, output_file will point to a .app directory instead of an
+    # #     # .ipa file: see https://github.com/flutter/flutter/issues/13065.
+    # #     #
+    # #     # flutter_build action helps you by setting up GYM_xxx environment variables
+    # #     # so that you can use gym() without parameters immediately afterwards:
+    # #     #
+    # #     #   gym(silent: true, suppress_xcode_output: true)
+    # #     #
+    # #     # We do not run gym() here because it requires a provisioning profile, which
+    # #     # is not installed on the test server.
+    # #     #
+    # #     # Once gym() completes, it sets SharedValues::IPA_OUTPUT_PATH context variable
+    # #     # which is then automatically detected by upload_to_testflight or
+    # #     # upload_to_app_store actions, so those do not need to be configured any
+    # #     # further.
+
+    # UI.success("Built #{output_file}!")
+end
